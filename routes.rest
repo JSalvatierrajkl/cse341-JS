@@ -1,0 +1,29 @@
+GET http://localhost:8080/users
+
+GET http://localhost:8080/users/68ba55426b5c77cdcd2ecd13
+
+POST http://localhost:8080/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"jsalvatierra",
+    "email":"jsalvatierra@testing.com",
+    "name":"Joel Salvatierra",
+    "ipaddress":"0.0.0.0",
+    "birthday":"16/10/2000"
+    
+}
+
+PUT http://localhost:8080/users/68cca42e3252c6f8691714ff HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"esantillan",
+    "email":"elisantillann@testing.com",
+    "name":"Elizabeth Santillan",
+    "ipaddress":"0.0.0.0",
+    "birthday":"16/10/1995"
+    
+}
+
+DELETE http://localhost:8080/users/68cca62c3252c6f869171501 HTTP/1.1
