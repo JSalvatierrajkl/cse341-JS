@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Users Api",
-    "description": "Users Api",
+    "title": "CSE341-JS API",
+    "description": "API for managing users and products with full CRUD operations",
     "version": "1.0.0"
   },
   "host": "cse341-js.onrender.com",
@@ -29,10 +29,13 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Get all users",
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -40,36 +43,53 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Create a new user",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "johndoe",
+                  "minLength": 3,
+                  "maxLength": 30
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "email",
+                  "example": "john@example.com"
                 },
                 "name": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "John Doe",
+                  "minLength": 2,
+                  "maxLength": 50
                 },
                 "ipaddress": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "ipv4",
+                  "example": "192.168.1.1"
                 },
                 "birthday": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "date",
+                  "example": "1990-01-01"
                 }
-              }
+              },
+              "required": ["username", "email", "name", "ipaddress", "birthday"]
             }
           }
         ],
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request - Validation Error"
           },
           "500": {
             "description": "Internal Server Error"
@@ -82,7 +102,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Get a single user by ID",
         "parameters": [
           {
             "name": "id",
@@ -94,6 +114,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -101,7 +127,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Update a user by ID",
         "parameters": [
           {
             "name": "id",
@@ -112,31 +138,51 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "johndoe",
+                  "minLength": 3,
+                  "maxLength": 30
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "email",
+                  "example": "john@example.com"
                 },
                 "name": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "John Doe",
+                  "minLength": 2,
+                  "maxLength": 50
                 },
                 "ipaddress": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "ipv4",
+                  "example": "192.168.1.1"
                 },
                 "birthday": {
-                  "example": "any"
+                  "type": "string",
+                  "format": "date",
+                  "example": "1990-01-01"
                 }
-              }
+              },
+              "required": ["username", "email", "name", "ipaddress", "birthday"]
             }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request - Validation Error"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -147,7 +193,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Delete a user by ID",
         "parameters": [
           {
             "name": "id",
@@ -159,6 +205,242 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/products/": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Get all products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Create a new product",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Laptop Computer"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "High-performance laptop for professional use"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 1299.99
+                },
+                "category": {
+                  "type": "string",
+                  "example": "Electronics"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "Dell"
+                },
+                "stock": {
+                  "type": "integer",
+                  "example": 50
+                },
+                "sku": {
+                  "type": "string",
+                  "example": "LAP-001"
+                },
+                "weight": {
+                  "type": "number",
+                  "example": 2.5
+                },
+                "dimensions": {
+                  "type": "object",
+                  "properties": {
+                    "length": {"type": "number", "example": 35},
+                    "width": {"type": "number", "example": 25},
+                    "height": {"type": "number", "example": 2}
+                  }
+                },
+                "color": {
+                  "type": "string",
+                  "example": "Silver"
+                },
+                "material": {
+                  "type": "string",
+                  "example": "Aluminum"
+                }
+              },
+              "required": ["name", "description", "price", "category", "brand", "stock", "sku", "weight", "dimensions", "color", "material"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request - Validation Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Get a single product by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Update a product by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Laptop Computer"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "High-performance laptop for professional use"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 1299.99
+                },
+                "category": {
+                  "type": "string",
+                  "example": "Electronics"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "Dell"
+                },
+                "stock": {
+                  "type": "integer",
+                  "example": 50
+                },
+                "sku": {
+                  "type": "string",
+                  "example": "LAP-001"
+                },
+                "weight": {
+                  "type": "number",
+                  "example": 2.5
+                },
+                "dimensions": {
+                  "type": "object",
+                  "properties": {
+                    "length": {"type": "number", "example": 35},
+                    "width": {"type": "number", "example": 25},
+                    "height": {"type": "number", "example": 2}
+                  }
+                },
+                "color": {
+                  "type": "string",
+                  "example": "Silver"
+                },
+                "material": {
+                  "type": "string",
+                  "example": "Aluminum"
+                }
+              },
+              "required": ["name", "description", "price", "category", "brand", "stock", "sku", "weight", "dimensions", "color", "material"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request - Validation Error"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Delete a product by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
