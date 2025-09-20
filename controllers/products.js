@@ -33,7 +33,6 @@ const getSingle = async (req, res) => {
 const createProduct = async (req, res) => {
     //#swagger.tags=['Products']
     try {
-        // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ 
@@ -51,9 +50,7 @@ const createProduct = async (req, res) => {
             stock: req.body.stock,
             sku: req.body.sku,
             weight: req.body.weight,
-            dimensions: req.body.dimensions,
             color: req.body.color,
-            material: req.body.material,
             createdAt: new Date(),
             updatedAt: new Date()
         };
@@ -76,7 +73,6 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     //#swagger.tags=['Products']
     try {
-        // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ 
@@ -95,9 +91,7 @@ const updateProduct = async (req, res) => {
             stock: req.body.stock,
             sku: req.body.sku,
             weight: req.body.weight,
-            dimensions: req.body.dimensions,
             color: req.body.color,
-            material: req.body.material,
             updatedAt: new Date()
         };
 

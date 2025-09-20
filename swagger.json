@@ -5,7 +5,7 @@
     "description": "API for managing users and products with full CRUD operations",
     "version": "1.0.0"
   },
-  "host": "cse341-js.onrender.com",
+  "host": "cse341-js-producst.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -24,12 +24,22 @@
         }
       }
     },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/users/": {
       "get": {
         "tags": [
           "Users"
         ],
-        "description": "Get all users",
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"
@@ -43,44 +53,30 @@
         "tags": [
           "Users"
         ],
-        "description": "Create a new user",
+        "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
-                  "type": "string",
-                  "example": "johndoe",
-                  "minLength": 3,
-                  "maxLength": 30
+                  "example": "any"
                 },
                 "email": {
-                  "type": "string",
-                  "format": "email",
-                  "example": "john@example.com"
+                  "example": "any"
                 },
                 "name": {
-                  "type": "string",
-                  "example": "John Doe",
-                  "minLength": 2,
-                  "maxLength": 50
+                  "example": "any"
                 },
                 "ipaddress": {
-                  "type": "string",
-                  "format": "ipv4",
-                  "example": "192.168.1.1"
+                  "example": "any"
                 },
                 "birthday": {
-                  "type": "string",
-                  "format": "date",
-                  "example": "1990-01-01"
+                  "example": "any"
                 }
-              },
-              "required": ["username", "email", "name", "ipaddress", "birthday"]
+              }
             }
           }
         ],
@@ -89,7 +85,7 @@
             "description": "Created"
           },
           "400": {
-            "description": "Bad Request - Validation Error"
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -102,7 +98,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Get a single user by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -127,7 +123,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Update a user by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -138,39 +134,25 @@
           {
             "name": "body",
             "in": "body",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
-                  "type": "string",
-                  "example": "johndoe",
-                  "minLength": 3,
-                  "maxLength": 30
+                  "example": "any"
                 },
                 "email": {
-                  "type": "string",
-                  "format": "email",
-                  "example": "john@example.com"
+                  "example": "any"
                 },
                 "name": {
-                  "type": "string",
-                  "example": "John Doe",
-                  "minLength": 2,
-                  "maxLength": 50
+                  "example": "any"
                 },
                 "ipaddress": {
-                  "type": "string",
-                  "format": "ipv4",
-                  "example": "192.168.1.1"
+                  "example": "any"
                 },
                 "birthday": {
-                  "type": "string",
-                  "format": "date",
-                  "example": "1990-01-01"
+                  "example": "any"
                 }
-              },
-              "required": ["username", "email", "name", "ipaddress", "birthday"]
+              }
             }
           }
         ],
@@ -179,7 +161,7 @@
             "description": "OK"
           },
           "400": {
-            "description": "Bad Request - Validation Error"
+            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
@@ -193,7 +175,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Delete a user by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -220,7 +202,7 @@
         "tags": [
           "Products"
         ],
-        "description": "Get all products",
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"
@@ -234,65 +216,42 @@
         "tags": [
           "Products"
         ],
-        "description": "Create a new product",
+        "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string",
-                  "example": "Laptop Computer"
+                  "example": "any"
                 },
                 "description": {
-                  "type": "string",
-                  "example": "High-performance laptop for professional use"
+                  "example": "any"
                 },
                 "price": {
-                  "type": "number",
-                  "example": 1299.99
+                  "example": "any"
                 },
                 "category": {
-                  "type": "string",
-                  "example": "Electronics"
+                  "example": "any"
                 },
                 "brand": {
-                  "type": "string",
-                  "example": "Dell"
+                  "example": "any"
                 },
                 "stock": {
-                  "type": "integer",
-                  "example": 50
+                  "example": "any"
                 },
                 "sku": {
-                  "type": "string",
-                  "example": "LAP-001"
+                  "example": "any"
                 },
                 "weight": {
-                  "type": "number",
-                  "example": 2.5
-                },
-                "dimensions": {
-                  "type": "object",
-                  "properties": {
-                    "length": {"type": "number", "example": 35},
-                    "width": {"type": "number", "example": 25},
-                    "height": {"type": "number", "example": 2}
-                  }
+                  "example": "any"
                 },
                 "color": {
-                  "type": "string",
-                  "example": "Silver"
-                },
-                "material": {
-                  "type": "string",
-                  "example": "Aluminum"
+                  "example": "any"
                 }
-              },
-              "required": ["name", "description", "price", "category", "brand", "stock", "sku", "weight", "dimensions", "color", "material"]
+              }
             }
           }
         ],
@@ -301,7 +260,7 @@
             "description": "Created"
           },
           "400": {
-            "description": "Bad Request - Validation Error"
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -314,7 +273,7 @@
         "tags": [
           "Products"
         ],
-        "description": "Get a single product by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -339,7 +298,7 @@
         "tags": [
           "Products"
         ],
-        "description": "Update a product by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -350,60 +309,37 @@
           {
             "name": "body",
             "in": "body",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string",
-                  "example": "Laptop Computer"
+                  "example": "any"
                 },
                 "description": {
-                  "type": "string",
-                  "example": "High-performance laptop for professional use"
+                  "example": "any"
                 },
                 "price": {
-                  "type": "number",
-                  "example": 1299.99
+                  "example": "any"
                 },
                 "category": {
-                  "type": "string",
-                  "example": "Electronics"
+                  "example": "any"
                 },
                 "brand": {
-                  "type": "string",
-                  "example": "Dell"
+                  "example": "any"
                 },
                 "stock": {
-                  "type": "integer",
-                  "example": 50
+                  "example": "any"
                 },
                 "sku": {
-                  "type": "string",
-                  "example": "LAP-001"
+                  "example": "any"
                 },
                 "weight": {
-                  "type": "number",
-                  "example": 2.5
-                },
-                "dimensions": {
-                  "type": "object",
-                  "properties": {
-                    "length": {"type": "number", "example": 35},
-                    "width": {"type": "number", "example": 25},
-                    "height": {"type": "number", "example": 2}
-                  }
+                  "example": "any"
                 },
                 "color": {
-                  "type": "string",
-                  "example": "Silver"
-                },
-                "material": {
-                  "type": "string",
-                  "example": "Aluminum"
+                  "example": "any"
                 }
-              },
-              "required": ["name", "description", "price", "category", "brand", "stock", "sku", "weight", "dimensions", "color", "material"]
+              }
             }
           }
         ],
@@ -412,7 +348,7 @@
             "description": "OK"
           },
           "400": {
-            "description": "Bad Request - Validation Error"
+            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
@@ -426,7 +362,7 @@
         "tags": [
           "Products"
         ],
-        "description": "Delete a product by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -448,9 +384,5 @@
         }
       }
     }
-  },
-  "schemas": [
-    "https",
-    "http"
-  ]
+  }
 }

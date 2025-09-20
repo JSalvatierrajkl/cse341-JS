@@ -9,7 +9,7 @@ const validateUser = [
     body('email').isEmail().withMessage('Valid email is required'),
     body('name').notEmpty().withMessage('Name is required').isLength({ min: 2, max: 50 }).withMessage('Name must be between 2 and 50 characters'),
     body('ipaddress').isIP().withMessage('Valid IP address is required'),
-    body('birthday').isISO8601().withMessage('Valid birthday date is required')
+    body('birthday').withMessage('Valid birthday date is required')
 ];
 
 const validateObjectId = [
