@@ -20,11 +20,13 @@ const validateObjectId = [
     param('id').isMongoId().withMessage('Invalid product ID format')
 ];
 
+const {isAuthenticated} = require('../middleware/authenticate');
+
 // Routes
 router.get('/', productsController.getAll);
 router.get('/:id', validateObjectId, productsController.getSingle);
-router.post('/', validateProduct, productsController.createProduct);
-router.put('/:id', validateObjectId, validateProduct, productsController.updateProduct);
-router.delete('/:id', validateObjectId, productsController.deleteProduct);
+router.post('/', isAuthenticated, validateProduct, productsController.createProduct);
+router.put('/:id', isAuthenticated, validateObjectId, validateProduct, productsController.updateProduct);
+router.delete('/:id', isAuthenticated, validateObjectId, productsController.deleteProduct);
 
 module.exports = router;

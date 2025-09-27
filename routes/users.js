@@ -16,11 +16,13 @@ const validateObjectId = [
     param('id').isMongoId().withMessage('Invalid user ID format')
 ];
 
+const {isAuthenticated} = require('../middleware/authenticate');
+
 // Routes
 router.get('/', usersController.getAll);
 router.get('/:id', validateObjectId, usersController.getSingle);
-router.post('/', validateUser, usersController.createUser);
-router.put('/:id', validateObjectId, validateUser, usersController.updateUser);
-router.delete('/:id', validateObjectId, usersController.deleteUser);
+router.post('/', isAuthenticated, validateUser, usersController.createUser);
+router.put('/:id', isAuthenticated, validateObjectId, validateUser, usersController.updateUser);
+router.delete('/:id', isAuthenticated, validateObjectId, usersController.deleteUser);
 
 module.exports = router;

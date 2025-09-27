@@ -14,3 +14,9 @@ const outputfile = './swagger.json';
 const endpointsFiles = ['./routes/index.js'];
 
 swaggerAutogen(outputfile, endpointsFiles, doc);
+
+//   "host": "cse341-js-producst.onrender.com",
+//   "basePath": "/",
+//   "schemes": [
+//     "https"
+//   ],

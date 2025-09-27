@@ -5,10 +5,10 @@
     "description": "API for managing users and products with full CRUD operations",
     "version": "1.0.0"
   },
-  "host": "cse341-js-producst.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
