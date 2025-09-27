@@ -20,3 +20,9 @@ swaggerAutogen(outputfile, endpointsFiles, doc);
 //   "schemes": [
 //     "https"
 //   ],
+
+//   "host": "localhost:8080",
+//   "basePath": "/",
+//   "schemes": [
+//     "http"
+//   ],
