@@ -11,4 +11,3 @@ router.use('/products', require('./products'));
 
 module.exports=router;
 
-//testing
